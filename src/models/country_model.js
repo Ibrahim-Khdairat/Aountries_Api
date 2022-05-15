@@ -22,9 +22,13 @@ const CountryModel = (sequelize, DataTypes) => {
                      type: DataTypes.STRING,
               },
               latlng: {
-                     type: DataTypes.ARRAY(DataTypes.FLOAT),
+                     // type: DataTypes.ARRAY(DataTypes.FLOAT),
+                     type: DataTypes.JSON,
               },
               currencies: {
+                     type: DataTypes.JSON,
+              },
+              languages : {
                      type: DataTypes.JSON,
               },
        });

@@ -1,5 +1,8 @@
 "use strict";
-
+/**
+ * @api {get} /country/getAllCountries Get All Countries
+ * return all countries in the database otherwise return error message
+ */
 const express = require("express");
 const router = express.Router();
 const replyBody = require("../../common/replyBody");

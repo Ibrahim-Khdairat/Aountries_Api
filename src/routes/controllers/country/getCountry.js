@@ -1,5 +1,7 @@
 "use strict";
-
+/**
+ * @api {post} /country/getCountry Get Country
+ */
 const express = require("express");
 const router = express.Router();
 const replyBody = require("../../common/replyBody");
@@ -8,9 +10,9 @@ const permission = require ("../../middlewears/permission");
 const { Country } = require("../../../models/index");
 const apiErrorCode = "GET_COUNTRY";
 
-router.get("/",verifyJWT, getByCountryName);
+router.get("/",verifyJWT, getCountry);
 
-async function getByCountryName(req, res) {
+async function getCountry(req, res) {
        await Country.findOne({
               where: req.body
               

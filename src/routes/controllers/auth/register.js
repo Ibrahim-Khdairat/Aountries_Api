@@ -1,5 +1,17 @@
 "use strict";
 
+/**
+ * @api {post} /auth/register Register
+ * @apiName Register
+ * @apiGroup Auth
+ * @apiDescription Register a new user
+ * @apiParam {String} userName User name
+ * @apiParam {String} password Password
+ * @apiParam {String} roleId Role Id
+ * @apiParam {String} email Email
+ * @apiSuccess {String} data User created successfully
+ * @apiError {String} error Error
+ */
 const express = require("express");
 const router = express.Router();
 const replyBody = require("../../common/replyBody");

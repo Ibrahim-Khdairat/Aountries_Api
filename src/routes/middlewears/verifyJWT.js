@@ -1,5 +1,11 @@
 'use strict';
 
+
+/**
+ * verify the token and return the user if it exists
+ * @param {*} token
+ * @returns appedned user object to req.body if true otherwise retrun error message
+ */
 const { Users } = require('../../models/index');
 const replyBody = require('../common/replyBody');
 

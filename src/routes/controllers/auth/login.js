@@ -1,6 +1,14 @@
 
 'use strict';
 
+/**
+ * @api {post} /auth/login Login
+ * @apiName Login
+ * @apiGroup Auth
+ * @apiDescription Login a user
+ * @apiParam {String} userName User name
+ * @apiParam {String} password Password
+ */
 const express = require("express");
 const router = express.Router();
 const replyBody = require("../../common/replyBody");

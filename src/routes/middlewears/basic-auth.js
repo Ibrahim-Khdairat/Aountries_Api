@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * 
+ */
 const base64 = require('base-64');
 const {Users} = require('../../models/index');
 const replyBody = require('../common/replyBody');

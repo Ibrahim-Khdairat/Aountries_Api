@@ -1,14 +1,16 @@
 "use strict";
 const { Country } = require("../../models/index");
+const replyBody = require("../common/replyBody");
 
-module.exports = async function (data, keys) {
+module.exports = async function (data, keys,apiErrorCode) {
+      
        let dataObj = {};
        let response;
        try {
               data.forEach(async (item, index) => {
                      for (let key in item) {
                             if (keys.includes(key)) {
-                                   dataObj[key] = item[key].common;
+                                   dataObj[key] = item[key];
                             }
                      }
                      await Country.create(dataObj);
@@ -19,4 +21,4 @@ module.exports = async function (data, keys) {
               response = error.message;
        }
        return response;
-}
+};

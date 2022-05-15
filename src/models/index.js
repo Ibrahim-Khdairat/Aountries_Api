@@ -14,10 +14,13 @@ const sequelize = new Sequelize(SQL_DATABASE_URL, {
 });
 
 const CountryModel = require("./country_model");
+const UsersModel = require("./user_model");
 
 const Country = CountryModel(sequelize, DataTypes);
+const Users = UsersModel(sequelize, DataTypes);
 
 module.exports = {
        db: sequelize,
        Country: Country,
+       Users: Users,
 };

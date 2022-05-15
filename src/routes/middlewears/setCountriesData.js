@@ -8,7 +8,6 @@
  */
 
 const { Country } = require("../../models/index");
-const replyBody = require("../common/replyBody");
 const ref = require("../../../config/ref.json")
 
 module.exports = async function (data,apiErrorCode) {

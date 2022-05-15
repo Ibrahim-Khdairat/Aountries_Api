@@ -6,7 +6,6 @@ const express = require("express");
 const router = express.Router();
 const replyBody = require("../../common/replyBody");
 const verifyJWT = require("../../middlewears/verifyJWT");
-const permission = require ("../../middlewears/permission");
 const { Country } = require("../../../models/index");
 const apiErrorCode = "GET_COUNTRY";
 

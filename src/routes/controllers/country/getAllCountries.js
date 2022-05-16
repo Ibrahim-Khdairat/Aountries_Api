@@ -10,7 +10,7 @@ const verifyJWT = require("../../middlewears/verifyJWT");
 const {Country} = require("../../../models/index");
 const apiErrorCode = "GET_ALL_COUNTRIES";
 
-router.get("/",verifyJWT, getAllCountries);
+router.get("/", getAllCountries);
 
 async function getAllCountries(req, res) {
        await Country.findAll()

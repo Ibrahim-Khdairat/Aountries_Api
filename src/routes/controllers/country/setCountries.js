@@ -17,7 +17,7 @@ const API = "https://restcountries.com/v3.1/all";
 const { Country } = require("../../../models/index");
 
 const apiErrorCode = "SET_COUNTRIES";
-router.post("/", verifyJWT, permission(), setCountries);
+router.post("/", permission(), setCountries);
 //  successf
 async function setCountries(req, res) {
       let allCountries = await Country.findAll();

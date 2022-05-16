@@ -1,21 +1,18 @@
 "use strict";
-/**
- * @api {post} /country/getCountry Get Country
- */
+
 const express = require("express");
 const router = express.Router();
 const replyBody = require("../../common/replyBody");
 const verifyJWT = require("../../middlewears/verifyJWT");
 const { Country } = require("../../../models/index");
-const apiErrorCode = "GET_COUNTRY";
+const ref = require("../../../../config/ref");
+const apiErrorCode = "GET_COUNTRY_CURRENCIES_BY_CCA2";
 
-router.get("/", getCountry);
+router.get("/", groupCountries);
 
-async function getCountry(req, res) {
-       
-       await Country.findOne({
-              where: req.body
-              
+async function groupCountries(req, res) {
+       await Country.findAll({
+              where: req.body,
        })
               .then(countries => {
                      if (countries !== null) {

@@ -7,15 +7,18 @@
  * @returns {Array} - API response for all countries
  */
 const axios = require("axios");
+const fs = require("fs");
 const replyBody = require("../common/replyBody");
+const allCountries = require("../../../config/allCountries.json");
 
-module.exports = async function (API,apiErrorCode) {
- 
+module.exports = async function (API, apiErrorCode) {
+
        let dataResponse = await axios.get(API)
-              .then( (response) => {   
+              .then(async (response) => {
+                    
                      return response.data;
               })
-              .catch(err=>{
+              .catch(err => {
                      throw (replyBody.error(`${apiErrorCode}`, err.message));
               });
 

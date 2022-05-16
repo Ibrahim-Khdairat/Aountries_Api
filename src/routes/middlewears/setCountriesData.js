@@ -9,18 +9,43 @@
 
 const { Country } = require("../../models/index");
 const ref = require("../../../config/ref.json")
+const fs = require("fs");
 
-module.exports = async function (data,apiErrorCode) {
-      
+
+module.exports = async function (data, apiErrorCode) {
+
        let dataObj = {};
        let response;
        try {
-              data.forEach(async (item, index) => {
-                     for (let key in item) {
+              fs.appendFile(".allCountries.json", "[", error => {
+                     if (error) {
+                            throw (replyBody.error(`${apiErrorCode}_ERROR`, error.message));
+                     }
+              })
+              let dataLength = data.length;
+              data.forEach(async (country, index) => {
+
+                     // prepare the country object
+                     for (let key in country) {
                             if (ref.hasOwnProperty(key)) {
-                                   dataObj[ref[key].keyDefinition] = item[key];
+                                   dataObj[ref[key].keyDefinition] = country[key];
                             }
                      }
+                     // set data in json file
+                     if (index !== dataLength - 1) {
+                            fs.appendFile(".allCountries.json", JSON.stringify(dataObj) + ",", error => {
+                                   if (error) {
+                                          throw (replyBody.error(`${apiErrorCode}_ERROR`, error.message));
+                                   }
+                            })
+                     } else {
+                            fs.appendFile(".allCountries.json", JSON.stringify(dataObj) + "]", error => {
+                                   if (error) {
+                                          throw (replyBody.error(`${apiErrorCode}_ERROR`, error.message));
+                                   }
+                            })
+                     }
+                     // set data in database
                      await Country.create(dataObj);
                      dataObj = {};
               });

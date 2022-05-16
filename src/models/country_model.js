@@ -7,13 +7,17 @@ const CountryModel = (sequelize, DataTypes) => {
                      autoIncrement: true
               },
               name: {
-                     type: DataTypes.JSON,
+                     type: DataTypes.INTEGER,
+                     ref:{
+                            model: 'Name',
+                            key: 'id'
+                     }
               },
               cca2: {
                      type: DataTypes.STRING,
               },
               ccn3: {
-                     type: DataTypes.STRING,
+                     type: DataTypes.INTEGER,
               },
               cca3: {
                      type: DataTypes.STRING,
@@ -25,10 +29,18 @@ const CountryModel = (sequelize, DataTypes) => {
                      type: DataTypes.JSON,
               },
               currencies: {
-                     type: DataTypes.JSON,
+                     type: DataTypes.INTEGER,
+                     ref:{
+                            model: 'Currency',
+                            key: 'id'
+                     }
               },
               languages : {
-                     type: DataTypes.JSON,
+                     type: DataTypes.INTEGER,
+                     ref:{
+                            model: 'Language',
+                            key: 'id'
+                     }
               },
        });
        return Country;

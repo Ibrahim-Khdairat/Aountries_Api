@@ -13,26 +13,28 @@ const getAPIData = require("../../middlewears/getAPIData");
 const setcountriesData = require("../../middlewears/setCountriesData");
 const verifyJWT = require("../../middlewears/verifyJWT");
 const permission = require("../../middlewears/permission");
-const API = "https://restcountries.com/v3.1/all";
-const { Country } = require("../../../models/index");
+const API = process.env.API;
+// const { Country } = require("../../../models/index");
+const DB_TABLES = require("../../../models/index");
+
 
 const apiErrorCode = "SET_COUNTRIES";
-router.post("/", permission(), setCountries);
+router.post("/", setCountries);
 //  successf
 async function setCountries(req, res) {
-      let allCountries = await Country.findAll();
+      let allCountries = await DB_TABLES["Country"].findAll();
       if (allCountries.length == 0) {
             const countriesData = await getAPIData(API, apiErrorCode);
             if (countriesData.length > 0) {
                   let response = await setcountriesData(countriesData, apiErrorCode);
                   if (response === true) {
-                        res.status(200).json(replyBody.done({ data: "Countries Added Successfully" }));
+                        res.status(201).json(replyBody.done({ message: "Countries Added Successfully" }));
                   } else {
-                        res.status(500).json(replyBody.error({ data: response }));
+                        res.status(500).json(replyBody.error({ message: response }));
                   }
             }
       } else {
-            res.status(200).json(replyBody.done({ data: "Countries Already Added" }));
+            res.status(409).json(replyBody.done({ data: "Countries Already Added" }));
       }
 }
 module.exports = router;

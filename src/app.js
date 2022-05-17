@@ -1,5 +1,6 @@
 "use strict";
-require('dotenv').config();
+const dotenv = require("dotenv");
+dotenv.config({ path: '../config/config.env' });
 
 // 3rd Party Resources
 const express = require("express");

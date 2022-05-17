@@ -21,7 +21,7 @@ async function getCountry(req, res) {
                      if (countries !== null) {
                             res.status(200).json(replyBody.done({ data: countries }));
                      } else {
-                            res.status(404).json(replyBody.error(`${apiErrorCode}_NOT_FOUND`, "No Countries Found"));
+                            res.status(204).json(replyBody.error(`${apiErrorCode}_NOT_FOUND`, "No Countries Found"));
                      }
               })
               .catch(err => {

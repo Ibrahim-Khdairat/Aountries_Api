@@ -1,34 +1,43 @@
 {
-       "name" : {
-              "keyDefinition" : "name",
-              "dataType": "object"
-       },
-       "cca2" : {
-              "keyDefinition" : "cca2",
-              "dataType": "string"
-       },
-       "cca3" : {
-              "keyDefinition" : "cca3",
-              "dataType": "string"
-       },
-       "ccn3" : {
-              "keyDefinition" : "ccn3",
-              "dataType": "string"
-       },
-       "region" : {
-              "keyDefinition" : "region",
-              "dataType": "string"
-       },
-       "latlng" : {
-              "keyDefinition" : "latlng",
-              "dataType": "array"
-       },
-       "currencies" :{
-              "keyDefinition" : "currencies",
-              "dataType": "object"
-       },
-       "languages" :{
-              "keyDefinition" : "languages",
-              "dataType": "object"
-       }
+    "DB_TABLE": "Country",
+    "name": {
+        "keyDefinition": "name",
+        "DB_TABLE": "Name",
+        "model": {
+            "keyDefinition": "keyDefinition",
+            "name": "name",
+            "countryId": "countryId"
+        },
+        "dataType": "object"
+    },
+    "cca2": {
+        "keyDefinition": "cca2",
+        "dataType": "string"
+    },
+    "cca3": {
+        "keyDefinition": "cca3",
+        "dataType": "string"
+    },
+    "ccn3": {
+        "keyDefinition": "ccn3",
+        "dataType": "string"
+    },
+    "region": {
+        "keyDefinition": "region",
+        "dataType": "string"
+    },
+    "latlng": {
+        "keyDefinition": "latlng",
+        "dataType": "array"
+    },
+    "currencies": {
+        "keyDefinition": "currencies",
+        "DB_TABLE": "Currency",
+        "dataType": "object"
+    },
+    "languages": {
+        "keyDefinition": "languages",
+        "DB_TABLE": "Language",
+        "dataType": "object"
+    }
 }

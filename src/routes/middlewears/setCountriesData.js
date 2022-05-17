@@ -8,6 +8,7 @@
  */
 
 const { Country } = require("../../models/index");
+const insertToDB = require("./insertToDB");
 const ref = require("../../../config/ref.json")
 const fs = require("fs");
 
@@ -17,11 +18,11 @@ module.exports = async function (data, apiErrorCode) {
        let dataObj = {};
        let response;
        try {
-              fs.appendFile(".allCountries.json", "[", error => {
-                     if (error) {
-                            throw (replyBody.error(`${apiErrorCode}_ERROR`, error.message));
-                     }
-              })
+              // fs.appendFile(".allCountries.json", "[", error => {
+              //        if (error) {
+              //               throw (replyBody.error(`${apiErrorCode}_ERROR`, error.message));
+              //        }
+              // })
               let dataLength = data.length;
               data.forEach(async (country, index) => {
 
@@ -32,21 +33,24 @@ module.exports = async function (data, apiErrorCode) {
                             }
                      }
                      // set data in json file
-                     if (index !== dataLength - 1) {
-                            fs.appendFile(".allCountries.json", JSON.stringify(dataObj) + ",", error => {
-                                   if (error) {
-                                          throw (replyBody.error(`${apiErrorCode}_ERROR`, error.message));
-                                   }
-                            })
-                     } else {
-                            fs.appendFile(".allCountries.json", JSON.stringify(dataObj) + "]", error => {
-                                   if (error) {
-                                          throw (replyBody.error(`${apiErrorCode}_ERROR`, error.message));
-                                   }
-                            })
-                     }
+
+                     // if (index !== dataLength - 1) {
+                     //        fs.appendFile(".allCountries.json", JSON.stringify(dataObj) + ",", error => {
+                     //               if (error) {
+                     //                      throw (replyBody.error(`${apiErrorCode}_ERROR`, error.message));
+                     //               }
+                     //        })
+                     // } else {
+                     //        fs.appendFile(".allCountries.json", JSON.stringify(dataObj) + "]", error => {
+                     //               if (error) {
+                     //                      throw (replyBody.error(`${apiErrorCode}_ERROR`, error.message));
+                     //               }
+                     //        })
+                     // }
                      // set data in database
-                     await Country.create(dataObj);
+                  await insertToDB(dataObj, index+1,apiErrorCode);
+
+                     // await Country.create(dataObj);
                      dataObj = {};
               });
               response = true

@@ -5,10 +5,13 @@ const CurrencyMolel = (sequelize , DataTypes)=>{
                      primaryKey: true,
                      autoIncrement: true
               },
-              symbol: {
+              keyDefinition: {
                      type: DataTypes.STRING,
               },
               name: {
+                     type: DataTypes.STRING,
+              },
+              symbol: {
                      type: DataTypes.STRING,
               },
               countryId: {

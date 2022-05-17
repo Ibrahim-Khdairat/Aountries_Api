@@ -5,10 +5,10 @@ const NameModel = (sequelize, DataTypes) => {
                             primaryKey: true,
                             autoIncrement: true
                      },
-                     keyDefinition:{
+                     common:{
                             type: DataTypes.STRING,
                      },
-                     name: {
+                     official: {
                             type: DataTypes.STRING,
                      },
                      countryId: {
@@ -21,3 +21,4 @@ const NameModel = (sequelize, DataTypes) => {
               });
               return Name;
 }
+module.exports = NameModel;

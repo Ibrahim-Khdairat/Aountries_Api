@@ -12,7 +12,7 @@ module.exports = () => {
               if (req.headers.x_admin == 1) {
                      next();
               } else {
-                     res.status(401).json(replyBody.error("Permission_Denied", `Forbidden`));
+                     res.status(403).json(replyBody.error("Permission_Denied", `Forbidden`));
               }
               //  if (req.user.capabilities.indexOf(capability) > -1) {
               //      res.status(200).json(replyBody.success("Permission_Granted", "Permission Granted"));

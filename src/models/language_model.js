@@ -7,7 +7,7 @@ const LanguageModel = (sequelize, DataTypes) => {
                      primaryKey: true,
                      autoIncrement: true
               },
-              subName: {
+              keyDefinition: {
                      type: DataTypes.STRING,
               },
               name: {

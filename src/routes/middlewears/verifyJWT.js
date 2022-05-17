@@ -24,10 +24,10 @@ module.exports = async (req, res, next) => {
          // check the inputs
          const usernameRegex = /^[0-9a-zA-Z_.-]+$/;
          if (!usernameRegex.test(requiredUserData.userName)) {
-                return res.status(403).json(replyBody.error("Registration_BadData", "user name must not contain spaces"))
+                return res.status(400).json(replyBody.error("Registration_BadData", "user name must not contain spaces"))
          }
          if (requiredUserData.password.length < 3) {
-                return res.status(403).json(replyBody.error("Registration_BadData", "password must be at least 3 characters long"))
+                return res.status(400).json(replyBody.error("Registration_BadData", "password must be at least 3 characters long"))
          }
 
         let checkUser = await Users.findOne({
@@ -42,7 +42,7 @@ module.exports = async (req, res, next) => {
             );
             res.status(201).json(record);
         } else {
-            return res.status(400).json(replyBody.error("Registration_UserExists", "Admin Already Exists"))
+            return res.status(409).json(replyBody.error("Registration_UserExists", "Admin Already Exists"))
         }
     } else {
         if (!req.headers.authorization) {

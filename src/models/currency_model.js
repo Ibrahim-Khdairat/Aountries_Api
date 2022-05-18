@@ -5,7 +5,7 @@ const CurrencyMolel = (sequelize , DataTypes)=>{
                      primaryKey: true,
                      autoIncrement: true
               },
-              keyDefinition: {
+              key: {
                      type: DataTypes.STRING,
               },
               name: {
@@ -13,14 +13,7 @@ const CurrencyMolel = (sequelize , DataTypes)=>{
               },
               symbol: {
                      type: DataTypes.STRING,
-              },
-              countryId: {
-                     type: DataTypes.INTEGER,
-                     references: {
-                            model: 'Country',
-                            key: 'id'
-                     }
-              },
+              }
        });
        return Currency;
 }

@@ -11,12 +11,11 @@ const NameModel = (sequelize, DataTypes) => {
                      official: {
                             type: DataTypes.STRING,
                      },
+                     nativeName: {
+                            type: DataTypes.STRING,
+                     },
                      countryId: {
                             type: DataTypes.INTEGER,
-                            references: {
-                                   model: 'Country',
-                                   key: 'id'
-                            }
                      },
               });
               return Name;

@@ -8,16 +8,12 @@ const CountryModel = (sequelize, DataTypes) => {
               },
               name: {
                      type: DataTypes.INTEGER,
-                     ref:{
-                            model: 'Name',
-                            key: 'id'
-                     }
               },
               cca2: {
                      type: DataTypes.STRING,
               },
               ccn3: {
-                     type: DataTypes.INTEGER,
+                     type: DataTypes.STRING,
               },
               cca3: {
                      type: DataTypes.STRING,
@@ -25,22 +21,14 @@ const CountryModel = (sequelize, DataTypes) => {
               region: {
                      type: DataTypes.STRING,
               },
-              latlng: {
-                     type: DataTypes.JSON,
-              },
+              // latlng: {
+              //        type: DataTypes.ARRAY(DataTypes.FLOAT),
+              // },
               currencies: {
                      type: DataTypes.INTEGER,
-                     ref:{
-                            model: 'Currency',
-                            key: 'id'
-                     }
               },
               languages : {
                      type: DataTypes.INTEGER,
-                     ref:{
-                            model: 'Language',
-                            key: 'id'
-                     }
               },
        });
        return Country;

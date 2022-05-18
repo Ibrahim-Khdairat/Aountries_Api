@@ -7,19 +7,12 @@ const LanguageModel = (sequelize, DataTypes) => {
                      primaryKey: true,
                      autoIncrement: true
               },
-              keyDefinition: {
+              key: {
                      type: DataTypes.STRING,
               },
               name: {
                      type: DataTypes.STRING,
-              },
-              countryId: {
-                     type: DataTypes.INTEGER,
-                     references: {
-                            model: 'Country',
-                            key: 'id'
-                     }
-              },
+              }
        });
        return Language;
 }

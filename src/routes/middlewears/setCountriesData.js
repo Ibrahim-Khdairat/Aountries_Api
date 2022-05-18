@@ -47,8 +47,13 @@ module.exports = async function (data, apiErrorCode) {
                      //               }
                      //        })
                      // }
+
                      // set data in database
-                  await insertToDB(dataObj, index+1,apiErrorCode);
+                     await insertToDB(dataObj,ref, index + 1, apiErrorCode);
+
+                     // console.log("\n");
+                     // console.log(dataObj);
+                     // console.log("\n");
 
                      // await Country.create(dataObj);
                      dataObj = {};

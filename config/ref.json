@@ -1,80 +1,64 @@
 {
-    "DB_TABLE":"Country",
-    "name":{
-        "keyDefinition":"name",
-        "DB_TABLE":"Name",
-        "common":{
-            "keyDefinition":"common",
-            "passParameter":true
+    "DB_TABLE": "Country",
+    "name": {
+        "keyDefinition": "name",
+        "DB_TABLE": "Name",
+        "common": {
+            "keyDefinition": "common"
         },
-        "official":{
-            "keyDefinition":"official",
-            "passParameter":true
+        "official": {
+            "keyDefinition": "official"
         },
-        "nativeName":{
-            "keyDefinition":"native",
-            "DB_TABLE":"Native",
-            "key":{
-                "keyDefinition":"key",
-                "passParameter":true
+        "nativeName": {
+            "keyDefinition": "nativeName",
+            "DB_TABLE": "NativeName",
+            "key": {
+                "keyDefinition": "key",
+                "common": {
+                    "keyDefinition": "common"
+                },
+                "official": {
+                    "keyDefinition": "official"
+                }
+            }
+        },
+        "countryID": {
+            "keyDefinition": "countryID"
+        }
+    },
+    "languages": {
+        "keyDefinition": "languages",
+        "DB_TABLE": "Language",
+        "key": {
+            "keyDefinition": "key",
+            "name": {
+                "keyDefinition": "name"
+            }
+        }
+    },
+    "currencies": {
+        "keyDefinition": "currencies",
+        "DB_TABLE": "Currency",
+        "key": {
+            "keyDefinition": "key",
+            "name": {
+                "keyDefinition": "name"
             },
-            "common":{
-                "keyDefinition":"common",
-                "passParameter":true
-            },
-            "official":{
-                "keyDefinition":"official",
-                "passParameter":true
-            }    
-        },
-        "countryID":{
-            "keyDefinition":"countryID",
-            "passParameter":true
+            "symbol": {
+                "keyDefinition": "symbol"
+            }
         }
     },
-    "languages":{
-        "keyDefinition":"languages",
-        "DB_TABLE":"Language",
-        "key":{
-            "keyDefinition":"key",
-            "passParameter":true
-        },
-        "name":{
-            "keyDefinition":"name",
-            "passParameter":true
-        }
+    "cca2": {
+        "keyDefinition": "cca2"
     },
-    "currencies":{
-        "keyDefinition":"currencies",
-        "DB_TABLE":"Currency",
-        "key":{
-            "keyDefinition":"key",
-            "passParameter":true
-        },
-        "name":{
-            "keyDefinition":"name",
-            "passParameter":true
-        },
-        "symbol":{
-            "keyDefinition":"symbol",
-            "passParameter":true
-        }
+    "cca3": {
+        "keyDefinition": "cca3"
     },
-    "cca2":{
-        "keyDefinition":"cca2",
-        "passParameter":true
+    "ccn3": {
+        "keyDefinition": "ccn3"
     },
-    
-    "cca3":{
-        "keyDefinition":"cca3",
-        "passParameter":true
-    },
-    "ccn3":{
-        "keyDefinition":"ccn3",
-        "passParameter":true
-    },
-    "region":{
-        "keyDefinition":"region",
-        "passParameter":true
+    "region": {
+        "keyDefinition": "region"
     }
 }

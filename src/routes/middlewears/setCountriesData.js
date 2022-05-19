@@ -16,6 +16,7 @@ const fs = require("fs");
 module.exports = async function (data, apiErrorCode) {
 
        let dataObj = {};
+       let array = [];
        let response;
        try {
               // fs.appendFile(".allCountries.json", "[", error => {
@@ -30,6 +31,7 @@ module.exports = async function (data, apiErrorCode) {
                      for (let key in country) {
                             if (ref.hasOwnProperty(key)) {
                                    dataObj[ref[key].keyDefinition] = country[key];
+                                   array.push(dataObj);
                             }
                      }
                      // set data in json file
@@ -58,7 +60,9 @@ module.exports = async function (data, apiErrorCode) {
                      // await Country.create(dataObj);
                      dataObj = {};
               });
-              response = true
+              // response = true
+              response = array;
+
        } catch (error) {
               response = error.message;
        }

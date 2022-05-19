@@ -6,7 +6,7 @@ const NativeNameModel = (sequelize, DataTypes) => {
                      autoIncrement: true
               },
               key: {
-                     type: DataTypes.INTEGER,
+                     type: DataTypes.STRING,
               },
               common: {
                      type: DataTypes.STRING,
@@ -16,7 +16,10 @@ const NativeNameModel = (sequelize, DataTypes) => {
               },
               nameId: {
                      type: DataTypes.INTEGER,
-              }
+              },
+              countyrId: {
+                     type: DataTypes.INTEGER,
+              },
        });
        return NativeName;
 }

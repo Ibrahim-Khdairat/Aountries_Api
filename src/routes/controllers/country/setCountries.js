@@ -12,7 +12,6 @@ const replyBody = require("../../common/replyBody");
 const getAPIData = require("../../middlewears/getAPIData");
 const setcountriesData = require("../../middlewears/setCountriesData");
 const API = process.env.API;
-// const { Country } = require("../../../models/index");
 const DB_TABLES = require("../../../models/index");
 
 
@@ -24,13 +23,13 @@ async function setCountries(req, res) {
       if (allCountries.length == 0) {
             const countriesData = await getAPIData(API, apiErrorCode);
             if (countriesData.length > 0) {
-                  let response = await setcountriesData(countriesData, apiErrorCode);
-                  res.status(200).json(response);
-                  // if (response === true) {
-                  //       res.status(201).json(replyBody.done({ message: "Countries Added Successfully" }));
-                  // }  else {
-                  //       res.status(500).json(replyBody.error({ message: response }));
-                  // }
+                  let response = await setcountriesData([countriesData[102]], apiErrorCode);
+                  // res.status(200).json(response);
+                  if (response === true) {
+                        res.status(201).json(replyBody.done({ message: "Countries Added Successfully" }));
+                  }  else {
+                        res.status(500).json(replyBody.error({ message: response }));
+                  }
             }
       } else {
             res.status(409).json(replyBody.done({ data: "Countries Already Added" }));

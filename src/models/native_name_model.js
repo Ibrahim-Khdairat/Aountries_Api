@@ -14,10 +14,7 @@ const NativeNameModel = (sequelize, DataTypes) => {
               official: {
                      type: DataTypes.STRING,
               },
-              nameId: {
-                     type: DataTypes.INTEGER,
-              },
-              countyrId: {
+              countryID: {
                      type: DataTypes.INTEGER,
               },
        });

@@ -12,7 +12,10 @@ const LanguageModel = (sequelize, DataTypes) => {
               },
               name: {
                      type: DataTypes.STRING,
-              }
+              },
+              countryID: {
+                     type: DataTypes.INTEGER,
+              },
        });
        return Language;
 }

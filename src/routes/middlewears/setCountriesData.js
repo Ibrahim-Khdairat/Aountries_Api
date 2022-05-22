@@ -31,7 +31,7 @@ module.exports = async function (data, apiErrorCode) {
                      for (let key in country) {
                             if (ref.hasOwnProperty(key)) {
                                    dataObj[ref[key].keyDefinition] = country[key];
-                                   array.push(dataObj);
+                                   // array.push(dataObj);
                             }
                      }
                      // set data in json file
@@ -60,8 +60,8 @@ module.exports = async function (data, apiErrorCode) {
                      // await Country.create(dataObj);
                      dataObj = {};
               });
-              // response = true
-              response = array;
+              response = true
+              // response = array;
 
        } catch (error) {
               response = error.message;

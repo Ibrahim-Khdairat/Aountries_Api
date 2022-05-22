@@ -13,7 +13,10 @@ const CurrencyMolel = (sequelize , DataTypes)=>{
               },
               symbol: {
                      type: DataTypes.STRING,
-              }
+              },
+              countryID: {
+                     type: DataTypes.INTEGER,
+              },
        });
        return Currency;
 }

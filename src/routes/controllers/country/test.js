@@ -13,14 +13,12 @@ const DB_TABLES = require("../../../models/index");
 router.get("/", getData);
 
 async function getData(req, res) {
-       let response =await DB_TABLES["NativeName"].findAll({
-              where :{
-                     countyrId: 2
-              }
-       });
+       let response =await DB_TABLES["NativeName"].findAll({});
 
        console.log("response: ", response);
-
+       response.sort(function (a, b) {
+              return a.countryID - b.countryID;
+          });
        res.status(200).json(response);
 }
 

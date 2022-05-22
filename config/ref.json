@@ -14,6 +14,7 @@
             "DB_TABLE": "NativeName",
             "key": {
                 "keyDefinition": "key",
+                "variableKeyName": true,
                 "common": {
                     "keyDefinition": "common"
                 },
@@ -30,10 +31,10 @@
         "keyDefinition": "languages",
         "DB_TABLE": "Language",
         "key": {
-            "keyDefinition": "key",
-            "name": {
-                "keyDefinition": "name"
-            }
+            "keyDefinition": "key"
+        },
+        "name": {
+            "keyDefinition": "name"
         }
     },
     "currencies": {
@@ -41,6 +42,7 @@
         "DB_TABLE": "Currency",
         "key": {
             "keyDefinition": "key",
+            "variableKeyName": true,
             "name": {
                 "keyDefinition": "name"
             },

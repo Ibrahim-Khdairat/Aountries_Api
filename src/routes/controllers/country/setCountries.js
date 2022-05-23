@@ -28,11 +28,11 @@ async function setCountries(req, res) {
                   if (response === true) {
                         res.status(201).json(replyBody.done({ message: "Countries Added Successfully" }));
                   }  else {
-                        res.status(500).json(replyBody.error({ message: response }));
+                        res.status(500).json(replyBody.error(`${apiErrorCode}_ERROR`, "Cannot set data for countries"));
                   }
             }
       } else {
-            res.status(409).json(replyBody.done({ data: "Countries Already Added" }));
+            res.status(409).json(replyBody.done({ message: "Countries Already Added" }));
       }
 }
 module.exports = router;

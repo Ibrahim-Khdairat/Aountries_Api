@@ -5,7 +5,6 @@
 const express = require("express");
 const router = express.Router();
 const replyBody = require("../../common/replyBody");
-const verifyJWT = require("../../middlewears/verifyJWT");
 const { Country } = require("../../../models/index");
 const apiErrorCode = "GET_COUNTRY";
 
@@ -25,7 +24,7 @@ async function getCountry(req, res) {
                      }
               })
               .catch(err => {
-                     res.status(500).json(replyBody.error(`${apiErrorCode}_ERROR`, err.message));
+                     res.status(500).json(replyBody.error(`${apiErrorCode}_ERROR`, 'Cannot get countrie'));
               });
 }
 

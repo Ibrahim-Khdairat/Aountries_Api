@@ -9,7 +9,8 @@
 
 const { Country } = require("../../models/index");
 const insertToDB = require("./insertToDB");
-const ref = require("../../../config/ref.json")
+const ref = require("../../../config/ref.json");
+const replyBody = require("../../routes/common/replyBody");
 const fs = require("fs");
 
 
@@ -65,6 +66,7 @@ module.exports = async function (data, apiErrorCode) {
 
        } catch (error) {
               response = error.message;
+              throw (replyBody.error(`${apiErrorCode}_ERROR`, "Cannot set data for countries"));
        }
        return response;
 };

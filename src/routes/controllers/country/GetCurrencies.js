@@ -3,9 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const replyBody = require("../../common/replyBody");
-const verifyJWT = require("../../middlewears/verifyJWT");
 const { Country } = require("../../../models/index");
-const ref = require("../../../../config/ref");
 const apiErrorCode = "GET_COUNTRY_CURRENCIES_BY_CCA2";
 
 router.get("/", getCurrencies);
@@ -23,7 +21,7 @@ async function getCurrencies(req, res) {
                      }
               })
               .catch(err => {
-                     res.status(500).json(replyBody.error(`${apiErrorCode}_ERROR`, err.message));
+                     res.status(500).json(replyBody.error(`${apiErrorCode}_ERROR`, 'Cannot get currencies'));
               });
 }
 

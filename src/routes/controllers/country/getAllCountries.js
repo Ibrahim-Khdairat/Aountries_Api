@@ -6,7 +6,6 @@
 const express = require("express");
 const router = express.Router();
 const replyBody = require("../../common/replyBody");
-const verifyJWT = require("../../middlewears/verifyJWT");
 const {Country} = require("../../../models/index");
 const apiErrorCode = "GET_ALL_COUNTRIES";
 
@@ -22,7 +21,7 @@ async function getAllCountries(req, res) {
               }
        }) 
        .catch(err => {
-              res.status(500).json(replyBody.error(`${apiErrorCode}_ERROR`, err.message));
+              res.status(500).json(replyBody.error(`${apiErrorCode}_ERROR`, "error in getting countries"));
        });
 }
 

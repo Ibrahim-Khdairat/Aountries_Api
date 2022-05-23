@@ -10,9 +10,7 @@ module.exports = async function (data, ref, index, apiErrorCode) {
                     if (ref[key].key === undefined) {
                         recursion(data[key], ref[key], obj);
                     } else {
-                        // for (let key2 in data[key]) {
                             convertToRow(data[key], ref[key], obj , index);
-                        // }
                     }
                 }
             }

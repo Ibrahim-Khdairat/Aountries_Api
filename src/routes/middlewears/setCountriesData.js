@@ -17,7 +17,10 @@ const fs = require("fs");
 module.exports = async function (data, apiErrorCode) {
 
        let dataObj = {};
-       let array = [];
+       let arrayObj = {
+              languages: [],
+              currencies: []
+       }
        let response;
        try {
               // fs.appendFile(".allCountries.json", "[", error => {
@@ -52,7 +55,8 @@ module.exports = async function (data, apiErrorCode) {
                      // }
 
                      // set data in database
-                     await insertToDB(dataObj,ref, index + 1, apiErrorCode);
+                     arrayObj = await insertToDB(dataObj, ref, arrayObj, apiErrorCode);
+                     // console.log("arrayObj for each  country : ", arrayObj);
 
                      // console.log("\n");
                      // console.log(dataObj);

@@ -20,10 +20,10 @@ router.post("/", setCountries);
 //  successf
 async function setCountries(req, res) {
       let allCountries = await DB_TABLES["Country"].findAll();
-      if (allCountries.length == 0) {
+      if (allCountries.length  ==0) {
             const countriesData = await getAPIData(API, apiErrorCode);
             if (countriesData.length > 0) {
-                  let response = await setcountriesData([countriesData[102]], apiErrorCode);
+                  let response = await setcountriesData(countriesData, apiErrorCode);
                   // res.status(200).json(response);
                   if (response === true) {
                         res.status(201).json(replyBody.done({ message: "Countries Added Successfully" }));

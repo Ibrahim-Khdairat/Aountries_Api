@@ -13,10 +13,8 @@ const NativeNameModel = (sequelize, DataTypes) => {
               },
               official: {
                      type: DataTypes.STRING,
-              },
-              countryID: {
-                     type: DataTypes.INTEGER,
-              },
+              }
+    
        });
        return NativeName;
 }

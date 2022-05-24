@@ -7,53 +7,101 @@
  */
 
 const DB = require("../../models/index");
-
-module.exports = async function (data, ref, obj, index) {
-    console.log("**********************************************************************************************************************")
-    console.log("data : ", data);
-    console.log("ref : ", ref);
-    console.log('\n')
-    console.log("\n")
-    await recursion(data, ref, {}, index);
-}
-const recursion = async (data, ref, obj, index) => {
-    console.log("_____________ Entre a recursion _____________")
-    console.log("data : ", data);
-    console.log("obj : ", obj);
-    console.log("\n")
-    if (ref.keyDefinition === "languages") {
-        for (let i in data) {
-            console.log("****** Inside Languages *********")
-            console.log("i : ", i);
-            console.log("data[i] : ", data[i]);
-            console.log("\n")
-
-            obj[ref.key.keyDefinition] = i;
-            obj[ref.name.keyDefinition] = data[i];
-            obj.countryID = index;
-            console.log("obj after: ", obj);
-            console.log(" Inserted \n")
-            // await DB[ref.DB_TABLE].create(obj);
-        }
-    } else {
-        for (let key in data) {
-            console.log("key: ", key);
-            console.log("data[key]: ", data[key]);
-            if (typeof data[key] === 'object') {
-                console.log("<<< OBJECT >>>");
-                console.log("\n")
-                obj[ref.key.keyDefinition] = key;
-                recursion(data[key], ref, obj, index);
+const simplifyNative = require("./simplifyNative");
+module.exports = async function (data, ref, arrayObj, apiErrorCode) {
+    for (let key in data) {
+        if (ref[key]) {
+            if (ref[key].isLookup) {
+                arrayObj = convertLookupToRow(data[key], ref[key], arrayObj, data.countryId, apiErrorCode);
             } else {
-                console.log("<<< STRING >>>");
-                console.log("\n")
-                obj[key] = data[key];
+                convertNameToRow(data[key], ref[key], data.countryId);
             }
         }
-        obj.countryID = index;
-        console.log("obj after: ", obj);
-        // await DB[ref.DB_TABLE].create(obj);
-        console.log(" Inserted \n")
     }
-    return obj;
+    return arrayObj;
+}
+
+
+const convertNameToRow = async (data, ref, countryId) => {
+    
+    let dataObj = {};
+    for (let key in data) {
+        if (ref[key].keyDefinition === "nativeName") {
+            simplifyNative(data[key], ref[key], countryId);
+        } else {
+            await DB[ref.DB_TABLE].create({
+                countryId: countryId,
+                type: ref[key].keyDefinition,
+                name: data[key],
+                isNative: false,
+            })
+        }
+    }
+}
+
+
+const convertLookupToRow = async (data, ref, arrayObj, countryId) => {
+    if (ref.keyDefinition === "languages") {
+        for (let key in data) {
+            let obj = {
+                key: key,
+                name: data[key],
+            }
+            let response = false;
+            arrayObj.languages.forEach(element => {
+                if (element.key === obj.key) {
+                    response = true;
+                    return;
+                }
+            });
+            if (response) {
+                await DB["CountryLanguage"].create({
+                    countryId: countryId,
+                    languageKey: obj.key,
+                });
+            } else {
+                arrayObj.languages.push(obj);
+                await DB[ref.DB_TABLE].create(obj);
+                await DB["CountryLanguage"].create({
+                    countryId: countryId,
+                    languageKey: obj.key,
+                });
+            }
+        }
+    } else {
+        arrayObj = await convertCurrencyToRow(data, ref, await arrayObj, countryId);
+    }
+    return arrayObj;
+}
+
+const convertCurrencyToRow = async (data, ref, arrayObj, countryId) => {
+    for (let key in data) {
+        let obj = {
+            key : key,
+            name : data[key].name,
+            symbol : data[key].symbol,
+        }
+        let response = false;
+        arrayObj.currencies.forEach(element => {
+            if (element.key === obj.key) {
+                response = true;
+                return;
+            }
+        });
+
+        if (response) {
+             await DB["CountryCurrency"].create({
+                    countryId: countryId,
+                    languageKey: obj.key,
+                });
+        } else {
+            arrayObj.currencies.push(obj);
+            await DB[ref.DB_TABLE].create(obj);
+            await DB["CountryCurrency"].create({
+                countryId: countryId,
+                languageKey: obj.key,
+            });
+        }
+    }
+    return arrayObj;
 }

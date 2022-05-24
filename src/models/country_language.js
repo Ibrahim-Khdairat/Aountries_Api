@@ -1,15 +1,10 @@
 const  CountryLanguageModel  = (sequelize , DataTypes)=>{
               const CountryLanguage = sequelize.define("CountryLanguage", {
-                     id: {
-                            type: DataTypes.INTEGER,
-                            primaryKey: true,
-                            autoIncrement: true
-                     },
                      countryId: {
                             type: DataTypes.INTEGER,
                      },
-                     languageId: {
-                            type: DataTypes.INTEGER,
+                     languageKey: {
+                            type: DataTypes.STRING,
                      }
               });
               return CountryLanguage;

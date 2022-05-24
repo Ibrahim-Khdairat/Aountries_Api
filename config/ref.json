@@ -2,6 +2,7 @@
     "DB_TABLE": "Country",
     "name": {
         "keyDefinition": "name",
+        "isLookup": false,
         "DB_TABLE": "Name",
         "common": {
             "keyDefinition": "common"
@@ -11,7 +12,7 @@
         },
         "nativeName": {
             "keyDefinition": "nativeName",
-            "DB_TABLE": "NativeName",
+            "DB_TABLE": "Name",
             "key": {
                 "keyDefinition": "key",
                 "variableKeyName": true,
@@ -29,6 +30,7 @@
     },
     "languages": {
         "keyDefinition": "languages",
+        "isLookup": true,
         "DB_TABLE": "Language",
         "key": {
             "keyDefinition": "key"
@@ -39,6 +41,7 @@
     },
     "currencies": {
         "keyDefinition": "currencies",
+        "isLookup": true,
         "DB_TABLE": "Currency",
         "key": {
             "keyDefinition": "key",
@@ -62,5 +65,8 @@
     },
     "region": {
         "keyDefinition": "region"
+    },
+    "latlng":{
+        "keyDefinition": "latlng"
     }
 }

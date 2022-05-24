@@ -1,17 +1,15 @@
 const NameModel = (sequelize, DataTypes) => {
               const Name = sequelize.define("Name", {
-                     id: {
-                            type: DataTypes.INTEGER,
-                            primaryKey: true,
-                            autoIncrement: true
-                     },
-                     common:{
+                     type:{
                             type: DataTypes.STRING,
                      },
-                     official: {
+                     name:{
                             type: DataTypes.STRING,
                      },
-                     nativeName: {
+                     isNative:{
+                            type: DataTypes.BOOLEAN,
+                     },
+                     nativeKey:{
                             type: DataTypes.STRING,
                      },
                      countryId: {

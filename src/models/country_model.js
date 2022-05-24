@@ -6,9 +6,6 @@ const CountryModel = (sequelize, DataTypes) => {
                      primaryKey: true,
                      autoIncrement: true
               },
-              name: {
-                     type: DataTypes.INTEGER,
-              },
               cca2: {
                      type: DataTypes.STRING,
               },
@@ -21,15 +18,10 @@ const CountryModel = (sequelize, DataTypes) => {
               region: {
                      type: DataTypes.STRING,
               },
-              // latlng: {
-              //        type: DataTypes.ARRAY(DataTypes.FLOAT),
-              // },
-              currencies: {
-                     type: DataTypes.INTEGER,
+              latlng: {
+                     type: DataTypes.ARRAY(DataTypes.FLOAT),
               },
-              languages : {
-                     type: DataTypes.INTEGER,
-              },
+
        });
        return Country;
 }

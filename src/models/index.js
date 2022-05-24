@@ -21,7 +21,7 @@ const CurrencyModel = require("./currency_model");
 const NameModel = require("./name_model");
 const CountryCurrencyModel = require("./country_currency");
 const CountryLanguageModel = require("./country_language");
-const NativeNameModel = require("./native_name_model");
+// const NativeNameModel = require("./native_name_model");
 
 const Country = CountryModel(sequelize, DataTypes);
 const Users = UsersModel(sequelize, DataTypes);
@@ -30,30 +30,31 @@ const Currency = CurrencyModel(sequelize, DataTypes);
 const Name = NameModel(sequelize, DataTypes);
 const CountryCurrency = CountryCurrencyModel(sequelize, DataTypes);
 const CountryLanguage = CountryLanguageModel(sequelize, DataTypes);
-const NativeName = NativeNameModel(sequelize, DataTypes);
+// const NativeName = NativeNameModel(sequelize, DataTypes);
+
 
 
 //  Countrt To Name Relation
-Country.hasOne(Name, {sourceKey:'id', foreignKey: 'countryId' });
+Country.hasMany(Name, {sourceKey:'id', foreignKey: 'countryId' });
 Name.belongsTo(Country, { foreignKey: 'countryId', targetKey : 'id' });
 
-// Name To Native Name Relation
-Name.hasMany(NativeName, {sourceKey:'id', foreignKey: 'nameId' });
-NativeName.belongsTo(Name, { foreignKey: 'nameId', targetKey : 'id' });
+// // Name To Native Name Relation
+// Name.hasMany(NativeName, {sourceKey:'id', foreignKey: 'nameId' });
+// NativeName.belongsTo(Name, { foreignKey: 'nameId', targetKey : 'id' });
 
 //  Country To Currency Relation
 Country.hasMany(CountryCurrency, {sourceKey:'id', foreignKey: 'countryId' });
 CountryCurrency.belongsTo(Country, { foreignKey: 'countryId', targetKey : 'id' });
 
-Currency.hasMany(CountryCurrency, {sourceKey:'id', foreignKey: 'currencyId' });
-CountryCurrency.belongsTo(Currency, { foreignKey: 'currencyId', targetKey : 'id' });
+Currency.hasMany(CountryCurrency, {sourceKey:'key', foreignKey: 'currencyKey' });
+CountryCurrency.belongsTo(Currency, { foreignKey: 'currencyKey', targetKey : 'key' });
 
 // Country To Language Relation
 Country.hasMany(CountryLanguage, {sourceKey:'id', foreignKey: 'countryId' });
 CountryLanguage.belongsTo(Country, { foreignKey: 'countryId', targetKey : 'id' });
 
-Language.hasMany(CountryLanguage, {sourceKey:'id', foreignKey: 'languageId' });
-CountryLanguage.belongsTo(Language, { foreignKey: 'languageId', targetKey : 'id' });
+Language.hasMany(CountryLanguage, {sourceKey:'key', foreignKey: 'languageKey' });
+CountryLanguage.belongsTo(Language, { foreignKey: 'languageKey', targetKey : 'key' });
 
 
 
@@ -66,6 +67,6 @@ module.exports = {
        "Name": Name,
        "CountryCurrency": CountryCurrency,
        "CountryLanguage": CountryLanguage,
-       "NativeName": NativeName,
+       // "NativeName": NativeName,
 
 };

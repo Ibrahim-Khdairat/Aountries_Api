@@ -1,15 +1,10 @@
 const CountryCurrencyModel = (sequelize, DataTypes) => {
        const CountryCurrency = sequelize.define("CountryCurrency", {
-              id: {
-                     type: DataTypes.INTEGER,
-                     primaryKey: true,
-                     autoIncrement: true
-              },
               countryId: {
                      type: DataTypes.INTEGER,
               },
-              currencyId: {
-                     type: DataTypes.INTEGER,
+              currencyKey: {
+                     type: DataTypes.STRING,
               }
        });
        return CountryCurrency;

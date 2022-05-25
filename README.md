@@ -9,7 +9,7 @@
  * use this route 
  >http://localhost:4010/country/setAllCountries
 
- and send in a header "X_ADMIN = 1"
+
 
 <br><br><br>
 
@@ -25,9 +25,7 @@
 
 ### - to get country by name : send this object in the body 
 > {\
-  &nbsp;  "name": {\
-        &nbsp; &nbsp; "common": "Uruguay"\
-    &nbsp; &nbsp; }\
+  &nbsp;  "name": "Bahrin" <br>
 }
 
 ### -  to get country by CCA2/CCA3/CCN3 : send this object in the body 
@@ -59,7 +57,16 @@ and send this object in the body
 
 ### if you want tyo group by language : send this object 
 > {<br>
-&nbsp;  "languages": { \
-     &nbsp; &nbsp;    "fra": "French" \
-   &nbsp; } \
+&nbsp;  "language" : "fra"<br>
 }
+
+
+<br><br><br>
+
+## 6- Download Data : 
+
+ * use this route
+> http://localhost:4010/country/download
+
+
+ and send in a header "X_ADMIN = 1"

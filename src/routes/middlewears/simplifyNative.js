@@ -15,7 +15,6 @@ module.exports = async function (data, ref , countryId){
                             obj["name"] = data[key];
 
                      }
-                     console.log("obj : ", obj);
                      await DB[ref.DB_TABLE].create(obj);
               }
        }

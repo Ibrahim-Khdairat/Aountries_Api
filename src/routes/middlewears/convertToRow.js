@@ -88,18 +88,17 @@ const convertCurrencyToRow = async (data, ref, arrayObj, countryId) => {
                 return;
             }
         });
-
         if (response) {
              await DB["CountryCurrency"].create({
                     countryId: countryId,
-                    languageKey: obj.key,
+                    currencyKey: obj.key,
                 });
         } else {
             arrayObj.currencies.push(obj);
             await DB[ref.DB_TABLE].create(obj);
             await DB["CountryCurrency"].create({
                 countryId: countryId,
-                languageKey: obj.key,
+                currencyKey: obj.key,
             });
         }
     }

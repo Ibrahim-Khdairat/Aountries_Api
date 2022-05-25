@@ -6,5 +6,5 @@ router.use('/getAllCountries', require('./getAllCountries'))
 router.use('/getCountry', require('./getCountry'))
 router.use('/getCurrencies', require('./GetCurrencies'))
 router.use('/groupCountries', require('./groupCountries'))
-router.use('/test', require('./test'))
+router.use('/download', require('./downloadJSON'))
 module.exports = router;
